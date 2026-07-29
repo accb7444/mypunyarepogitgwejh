@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Three-Body Problem Simulator</title>
+    <link rel="stylesheet" href="3bodya.css">
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+
+    <!-- ZOOM CONTROLS -->
+    <div id="zoom-box">
+        <button id="z-in">+</button>
+        <input id="z-sl" type="range" min="20" max="400" value="100">
+        <button id="z-out">−</button>
+    </div>
+
+    <!-- RIGHT CONTROL PANEL -->
+    <aside id="panel">
+        <div class="ph">
+            <span class="pt">THREE-BODY PROBLEM</span>
+            <button id="btn-recenter" title="Re-centre Camera">⌖</button>
+        </div>
+
+        <!-- Bodies -->
+        <section class="ps">
+            <div class="st">BODIES</div>
+            <!-- Alpha -->
+            <div class="br">
+                <div class="bsph" id="sph0"></div>
+                <div class="bi">
+                    <span class="bn">α Alpha</span>
+                    <input class="ms" id="ms0" type="range" min="20" max="400" value="100">
+                    <div class="mr"><span id="mv0">1.0</span> M<sub>☉</sub></div>
+                </div>
+                <button class="btog on" id="tog0">●</button>
+            </div>
+            <!-- Beta -->
+            <div class="br">
+                <div class="bsph" id="sph1"></div>
+                <div class="bi">
+                    <span class="bn">β Beta</span>
+                    <input class="ms" id="ms1" type="range" min="20" max="400" value="100">
+                    <div class="mr"><span id="mv1">1.0</span> M<sub>☉</sub></div>
+                </div>
+                <button class="btog on" id="tog1">●</button>
+            </div>
+            <!-- Gamma -->
+            <div class="br">
+                <div class="bsph" id="sph2"></div>
+                <div class="bi">
+                    <span class="bn">γ Gamma</span>
+                    <input class="ms" id="ms2" type="range" min="20" max="400" value="100">
+                    <div class="mr"><span id="mv2">1.0</span> M<sub>☉</sub></div>
+                </div>
+                <button class="btog on" id="tog2">●</button>
+            </div>
+        </section>
+
+        <!-- Visualization -->
+        <section class="ps">
+            <div class="st">VISUALIZATION</div>
+            <div class="gr">
+                Gravity:
+                <label><input type="radio" name="grav" value="on" checked> on</label>
+                <label><input type="radio" name="grav" value="off"> off</label>
+            </div>
+            <label class="cl"><input id="ck-f" type="checkbox"> <b class="aa ab">→</b> Gravity Force</label>
+            <label class="cl"><input id="ck-v" type="checkbox" checked> <b class="aa ag">→</b> Velocity</label>
+            <label class="cl"><input id="ck-p" type="checkbox" checked> <span class="ico">↺</span> Path</label>
+            <label class="cl"><input id="ck-g" type="checkbox"> <span class="ico">⊞</span> Grid</label>
+            <label class="cl"><input id="ck-cm" type="checkbox"> <span class="ico">✦</span> Centre of Mass</label>
+            <label class="cl"><input id="ck-e" type="checkbox"> <span class="ico">⚡</span> Energy Readout</label>
+        </section>
+
+        <!-- Presets -->
+        <section class="ps">
+            <div class="st">PRESETS</div>
+            <div class="pgrid">
+                <button class="pb active" data-p="figure8">Figure-8</button>
+                <button class="pb" data-p="lagrange">Lagrange △</button>
+                <button class="pb" data-p="binary">Binary+Planet</button>
+                <button class="pb" data-p="chaos">Chaotic</button>
+            </div>
+        </section>
+
+        <!-- Energy (hidden by default) -->
+        <section class="ps" id="esec" hidden>
+            <div class="st">ENERGY</div>
+            <div class="er"><span>Kinetic</span> <code id="eke">—</code></div>
+            <div class="er"><span>Potential</span> <code id="epe">—</code></div>
+            <div class="er"><span>Total</span> <code id="ete">—</code></div>
+            <div class="er"><span>Momentum</span> <code id="emo">—</code></div>
+        </section>
+
+        <!-- Keys cheatsheet -->
+        <section class="ps keys">
+            <div class="st">KEYBOARD</div>
+            <span class="key">Space</span> play/pause &nbsp;
+            <span class="key">R</span> reset &nbsp;
+            <span class="key">G</span> grid &nbsp;
+            <span class="key">V</span> velocity &nbsp;
+            <span class="key">F</span> force
+        </section>
+    </aside>
+
+    <!-- BOTTOM PLAYBACK BAR -->
+    <footer id="btm">
+        <div id="spd">
+            <label><input type="radio" name="spd" value="fast"> Fast</label>
+            <label><input type="radio" name="spd" value="normal" checked> Normal</label>
+            <label><input type="radio" name="spd" value="slow"> Slow</label>
+        </div>
+        <div id="pb">
+            <button class="cb" id="breset" title="Reset (R)">⏮</button>
+            <button class="cb play-cb" id="bplay" title="Play / Pause (Space)">▶</button>
+            <button class="cb" id="bstep" title="Step">⏭</button>
+        </div>
+        <div id="tmr">
+            <div id="tv">0</div>
+            <div id="tl">Earth Days</div>
+        </div>
+    </footer>
+
+    <!-- DRAG HINT -->
+    <div id="hint">Drag bodies · Drag arrow tip → set velocity · Scroll → zoom · Drag canvas → pan</div>
+
+    <script src="3bodya.js"></script>
+</body>
+
+</html>
