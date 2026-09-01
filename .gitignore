@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build/dependencies (none for this project, but keeping for future)
+node_modules/
+dist/
+build/
+
+# Media assets
+media/screenshot.png
