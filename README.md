@@ -144,8 +144,4 @@ MIT — see [LICENSE](LICENSE).
 
 ## Author
 
-Created with Claude (Anthropic). Maintained by [accb7444](https://github.com/accb7444).
-
----
-
-*If you add a screenshot, drop it in `media/screenshot.png` and the badge at the top of this README will render automatically.*
+Created with Claude (Anthropic). Maintained by [accb7444](https://github.com/cb7444).
